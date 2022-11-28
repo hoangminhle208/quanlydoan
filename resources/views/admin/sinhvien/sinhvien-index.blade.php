@@ -62,9 +62,9 @@
                             <td> Email: {{$sv->Email}}
                                 <br>Quê quán:{{$sv->QueQuan}}
                                 <br>Ngày sinh:{{$sv->NgaySinh}}
-                                <br>Bộ môn:{{$sv->SoDienThoai}}
+                                <br>SDT:{{$sv->SoDienThoai}}
                             </td>
-                            <td>Khoa: {{DB::table('khoas')->where('MaKhoa', $sv->Khoa)->value('TenKhoa')}}
+                            <td> Khoa: {{DB::table('khoas')->where('MaKhoa', $sv->Khoa)->value('TenKhoa')}}
                                 <br>Chuyên ngành: {{DB::table('chuyennganhs')->where('MaChuyenNganh', $sv->ChuyenNganh)->value('TenChuyenNganh')}}
                                 <br>Lớp: {{DB::table('lops')->where('MaLop', $sv->Lop)->value('MaLop')}}
                                 <br>Hệ đào tạo: {{DB::table('hedaotaos')->where('MaHeDaoTao', $sv->HeDaoTao)->value('TenHeDaoTao')}}

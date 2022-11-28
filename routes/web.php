@@ -12,7 +12,11 @@ use App\Http\Controllers\GiaovienController;
 use App\Http\Controllers\HoidongController;
 use App\Http\Controllers\SinhvienController;
 use App\Http\Controllers\SvDoanController;
+use App\Http\Controllers\SvGiangvienController;
+use App\Http\Controllers\SvHoidongController;
+use App\Http\Controllers\SvSinhvienController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SvprofileController;
 use App\Models\Chuyennganh;
 use App\Models\Doan;
 use App\Models\Giaovien;
@@ -33,7 +37,15 @@ use App\Models\Sinhvien;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/sinhvien/doan',SvDoanController::class);
+Route::resource('/sv/hoidong',SvHoidongController::class);
+
+Route::resource('/sv/profile',SvprofileController::class);
+
+Route::resource('/sv/giaovien',SvGiangvienController::class);
+
+Route::resource('/sv/sinhvien',SvSinhvienController::class);
+
+Route::resource('/sv/doan',SvDoanController::class);
 
 Route::resource('/admin/user',UserController::class)->middleware('AdminRole');
 
@@ -70,9 +82,9 @@ Route::get('/admin/dashboard',function(){
     return view('admin.admin-dashboard',compact('nienkhoa_count','khoa_count','chuyennganh_count','hedaotao_count','lop_count','giaovien_count','hoidong_count','sinhvien_count','doan_count'));
 })->name('admin.dashboard');
 
-Route::get('/sinhvien/index',function(){
+Route::get('/sv/index',function(){
     return view('sinhvien.index');
-})->name('sinhvien.index');
+})->name('sv.index');
 
 // Route::get('/', function () {
 //     return view('welcome');

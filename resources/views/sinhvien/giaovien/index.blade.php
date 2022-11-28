@@ -4,7 +4,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2">
                 <a href=""
-                    class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-black">Danh sách đề tài</a>
+                    class="px-4 py-2 bg-indigo-500 hover:bg-indigo-700 rounded-lg text-black">Danh sách giáo viên</a>
             </div>
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -15,7 +15,7 @@
                                     <tr>
                                         <th scope="col"
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Mã đồ án 
+                                            Mã giáo viên
                                         </th>
                                         <th scope="col"
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
@@ -23,65 +23,45 @@
                                         </th>
                                         <th scope="col"
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Tên đồ án 
+                                            Họ và tên
                                         </th>
                                         <th scope="col"
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Chuyên Ngành 
+                                            Khoa/Bộ môn
                                         </th>
                                         <th scope="col"
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            STVH 
+                                            Liên hệ
                                         </th>
-                                        <th scope="col"
-                                            class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            GVHD
-                                        </th>
-                                        <th scope="col"
-                                            class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Link 
-                                        </th>
-                                        <th scope="col"
-                                            class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                                            Trạng thái
-                                        </th>
+                                        
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($doan as $da)
+                                    @foreach ($giaovien as $gv)
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $da->MaDoAn }}
+                                                {{ $gv->MaGiaoVien }}
                                             </td>
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <img src="{{$da->HinhAnh}}" style="width:75px; height:75px;"
+                                                <img src="{{$gv->HinhAnh}}" style="width:75px; height:75px;"
                                                     class="w-16 h-16 rounded">
                                             </td>
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $da->TenDetai }}
+                                                {{ $gv->Ten }}
                                             </td>
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ DB::table('chuyennganhs')->where('MaChuyenNganh', $da->ChuyenNganh)->value('TenChuyenNganh') }}
+                                                Khoa: {{DB::table('khoas')->where('MaKhoa', $gv->Khoa)->value('TenKhoa')}}
+                                Bộ môn: {{$gv->BoMon}}
                                             </td>
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ DB::table('sinhviens')->where('MaSinhVien', $da->SVTH)->value('Ten') }}
-                                            </td>
-                                            <td
-                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ DB::table('giaoviens')->where('MaGiaoVien', $da->GVHD)->value('Ten') }}
-                                            </td>
-                                            <td
-                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <button><a href="{{$da->Link}}" role="button">Link</a></button>
-                                            </td>
-                                            <td
-                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <strong>{{$da->TrangThai}}</strong>
+                                Email: {{$gv->Email}}
+                                <br>Quê quán: {{$gv->QueQuan}}
                                             </td>
                                         </tr>
                                     @endforeach

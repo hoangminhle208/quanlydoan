@@ -54,7 +54,7 @@
                 <li>
                     <hr class="dropdown-divider">
                 </li>
-                <li><a class="dropdown-item" href="/admin/taikhoan">Quản lí user</a></li>
+                <li><a class="dropdown-item" href="/admin/user">Quản lí user</a></li>
                 </ul>
 
                 

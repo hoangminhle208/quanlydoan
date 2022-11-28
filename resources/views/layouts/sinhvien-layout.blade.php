@@ -192,7 +192,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Trang chủ</h3>
+                <h3><a href="/sv/index">Trang chủ</a></h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -201,16 +201,16 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Thông tin</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="/sinhvien/doan">Đề tài</a>
+                            <a href="/sv/doan">Đề tài</a>
                         </li>
                         <li>
-                            <a href="#">Sinh viên</a>
+                            <a href="/sv/sinhvien">Sinh viên</a>
                         </li>
                         <li>
-                            <a href="#">Giảng viên</a>
+                            <a href="/sv/giaovien">Giảng viên</a>
                         </li>
                         <li>
-                            <a href="#">Hội đồng</a>
+                            <a href="/sv/hoidong">Hội đồng</a>
                         </li>
                         <li>
                             <a href="#">....</a>
@@ -218,16 +218,16 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">About</a>
+                    <a href="/sv/profile">Tài khoản</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chức năng</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">Page 1</a>
+                            <a href="#">Đăng ký đề tài</a>
                         </li>
                         <li>
-                            <a href="#">Page 2</a>
+                            <a href="#">Tạo nhóm</a>
                         </li>
                         <li>
                             <a href="#">Page 3</a>
