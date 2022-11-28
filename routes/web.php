@@ -11,6 +11,8 @@ use App\Http\Controllers\LopController;
 use App\Http\Controllers\GiaovienController;
 use App\Http\Controllers\HoidongController;
 use App\Http\Controllers\SinhvienController;
+use App\Http\Controllers\SvDoanController;
+use App\Http\Controllers\UserController;
 use App\Models\Chuyennganh;
 use App\Models\Doan;
 use App\Models\Giaovien;
@@ -31,23 +33,27 @@ use App\Models\Sinhvien;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/admin/doan',DoanController::class);
+Route::resource('/sinhvien/doan',SvDoanController::class);
 
-Route::resource('/admin/sinhvien',SinhvienController::class);
+Route::resource('/admin/user',UserController::class)->middleware('AdminRole');
 
-Route::resource('/admin/hoidong',HoidongController::class);
+Route::resource('/admin/doan',DoanController::class)->middleware('AdminRole');
 
-Route::resource('/admin/giaovien',GiaovienController::class);
+Route::resource('/admin/sinhvien',SinhvienController::class)->middleware('AdminRole');
 
-Route::resource('/admin/lop',LopController::class);
+Route::resource('/admin/hoidong',HoidongController::class)->middleware('AdminRole');
 
-Route::resource('/admin/hedaotao',HedaotaoController::class);
+Route::resource('/admin/giaovien',GiaovienController::class)->middleware('AdminRole');
 
-Route::resource('/admin/chuyennganh',ChuyennganhController::class);
+Route::resource('/admin/lop',LopController::class)->middleware('AdminRole');
 
-Route::resource('/admin/khoa',KhoaController::class);
+Route::resource('/admin/hedaotao',HedaotaoController::class)->middleware('AdminRole');
 
-Route::resource('/admin/nienkhoa',NienkhoaController::class);
+Route::resource('/admin/chuyennganh',ChuyennganhController::class)->middleware('AdminRole');
+
+Route::resource('/admin/khoa',KhoaController::class)->middleware('AdminRole');
+
+Route::resource('/admin/nienkhoa',NienkhoaController::class)->middleware('AdminRole');
 
 Route::get('/',[HomeController::class,'checkUserType']);
 
@@ -64,9 +70,9 @@ Route::get('/admin/dashboard',function(){
     return view('admin.admin-dashboard',compact('nienkhoa_count','khoa_count','chuyennganh_count','hedaotao_count','lop_count','giaovien_count','hoidong_count','sinhvien_count','doan_count'));
 })->name('admin.dashboard');
 
-Route::get('/user/dashboard',function(){
-    return view('user-dashboard');
-})->name('user.dashboard');
+Route::get('/sinhvien/index',function(){
+    return view('sinhvien.index');
+})->name('sinhvien.index');
 
 // Route::get('/', function () {
 //     return view('welcome');
