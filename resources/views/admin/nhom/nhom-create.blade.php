@@ -1,6 +1,6 @@
 @extends('layouts\nienkhoa-layout')
 @section('content')
-    <div class="container">
+<div class="container">
     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <a role="button" class="btn btn-success" href="/admin/dashboard"><i class="fa-solid fa-house"></i>Home</a>
     <a role="button" class="btn btn-info" href="/admin/profile"><i class="fa-solid fa-user"></i>My Profile</a>
@@ -29,45 +29,47 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Sửa chuyên ngành</h3>
+                        <h3>Thêm nhóm</h3>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{route('chuyennganh.index')}}" class="btn btn-primary float-end">Danh sách chuyên ngành</a>
+                        <a href="{{route('nhom.index')}}" class="btn btn-primary float-end">Danh sách nhóm</a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{route('chuyennganh.update',$chuyennganh->id)}}" method="POST">
+                <form action="{{route('nhom.store')}}" method="POST">
                     @csrf
-                    @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <strong>Mã chuyên ngành</strong>
-                                <input type="text" name="MaKhoa" value="{{$chuyennganh->MaChuyenNganh}}" class="form-control" placeholder="Nhập mã khoa">
+                                <strong>Tên nhóm</strong>
+                                <input type="text" name="TenNhom" class="form-control" placeholder="Nhập tên nhóm">
                             </div>
                             <div class="form-group">
-                                <strong>Tên chuyên ngành</strong>
-                                <input type="text" name="TenChuyenNganh" value="{{$chuyennganh->TenChuyenNganh}}" class="form-control" placeholder="Nhập tên khoa">
-                            </div>
-                            <div class="form-group">
-                                <strong>Chọn khoa</strong>
-                                <select class="form-select form-select-sm" name="MaKhoa" aria-label=".form-select-lg example">
-                                    @foreach(DB::table('khoas')->pluck('MaKhoa') as $makhoa)
-                                    <option value={{$makhoa}}>{{DB::table('khoas')->where('MaKhoa', $makhoa)->value('TenKhoa');}}</option>
+                                <strong>Nhóm trưởng</strong>
+                                <select class="form-select form-select-sm" name="NhomTruong" aria-label=".form-select-lg example">
+                                    @foreach(DB::table('sinhviens')->pluck('MaSinhVien') as $masv)
+                                    <option value={{$masv}}>{{DB::table('sinhviens')->where('MaSinhVien', $masv)->value('Ten');}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <!-- <div class="form-group">
-                                <strong>Mã khoa</strong>
-                                <input type="text" name="NgayThanhLap" value="{{$chuyennganh->MaKhoa}}" class="form-control" placeholder="Nhập ngày thành lập">
-                            </div> -->
                             <div class="form-group">
-                                <strong>Mô tả</strong>
-                                <input type="text" name="MoTa" value="{{$chuyennganh->MoTa}}" class="form-control" placeholder="Nhập mô tả ">
+                                <strong>Thành viên 1</strong>
+                                <select class="form-select form-select-sm" name="ThanhVien1" aria-label=".form-select-lg example">
+                                    @foreach(DB::table('sinhviens')->pluck('MaSinhVien') as $masv)
+                                    <option value={{$masv}}>{{DB::table('sinhviens')->where('MaSinhVien', $masv)->value('Ten');}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <strong>Thành viên 2</strong>
+                                <select class="form-select form-select-sm" name="ThanhVien2" aria-label=".form-select-lg example">
+                                    @foreach(DB::table('sinhviens')->pluck('MaSinhVien') as $masv)
+                                    <option value={{$masv}}>{{DB::table('sinhviens')->where('MaSinhVien', $masv)->value('Ten');}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-                        
                     </div>
                     <button type="submit" class="btn btn-success mt-2">Lưu</button>
                 </form>

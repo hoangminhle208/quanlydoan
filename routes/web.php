@@ -10,6 +10,7 @@ use App\Http\Controllers\KhoaController;
 use App\Http\Controllers\LopController;
 use App\Http\Controllers\GiaovienController;
 use App\Http\Controllers\HoidongController;
+use App\Http\Controllers\NhomController;
 use App\Http\Controllers\SinhvienController;
 use App\Http\Controllers\SvDoanController;
 use App\Http\Controllers\SvGiangvienController;
@@ -37,6 +38,13 @@ use App\Models\Sinhvien;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/sv/nhom',[NhomController::class,'create']);
+
+//Route::resource('/sv/nhom',NhomController::class);
+
+Route::resource('/admin/nhom',NhomController::class)->middleware('AdminRole');
+
 Route::resource('/sv/hoidong',SvHoidongController::class);
 
 Route::resource('/sv/profile',SvprofileController::class);

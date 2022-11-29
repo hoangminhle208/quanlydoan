@@ -77,7 +77,7 @@
                                             </td>
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                <button><a href="{{$da->Link}}" role="button">Link</a></button>
+                                                <button><a href="{{$da->Link}}" role="button" target="_blank">Link</a></button>
                                             </td>
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">

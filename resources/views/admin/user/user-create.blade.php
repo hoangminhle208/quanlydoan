@@ -21,6 +21,7 @@
         <li><a class="dropdown-item" href="/admin/hoidong">Quản lí hội đồng</a></li>
         <li><a class="dropdown-item" href="/admin/doan">Quản lí đồ án</a></li>
         <li><a class="dropdown-item" href="/admin/user">Quản lí user</a></li>
+        <li><a class="dropdown-item" href="/admin/nhom">Quản lí nhóm</a></li>
         </ul>
     </div>
     </div>

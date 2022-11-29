@@ -24,7 +24,11 @@ class SvprofileController extends Controller
     public function store(Request $request)
     {
         User::create($request->all());
-        return redirect()->route('user.index');
+        return redirect()->route('sv.index');
     }
-    
+    public function update(Request $request,Sinhvien $sinhvien)
+    {
+        $sinhvien->update($request->all());
+        return redirect()->route('sinhvien.profile.index')->with('thongbao','Cập nhật sinh viên thành công');
+    }
 }

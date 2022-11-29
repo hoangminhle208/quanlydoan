@@ -57,7 +57,7 @@
                     <div class="card-body">
                     <div class="tab-content">
                         <div class="active tab-pane" id="personal_info">
-                        <form class="form-horizontal" method="POST" action="{{route('user.store')}}" id="AdminInfoForm">
+                        <form class="form-horizontal" method="POST" action="{{route('user.update',Auth::user()->id)}}" id="AdminInfoForm">
                             <div class="form-group row">
                             <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                             <div class="col-sm-10">

@@ -1,7 +1,7 @@
 @extends('layouts\nienkhoa-layout')
 @section('content')
 <div class="container">
-    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <a role="button" class="btn btn-success" href="/admin/dashboard"><i class="fa-solid fa-house"></i>Home</a>
     <a role="button" class="btn btn-info" href="/admin/profile"><i class="fa-solid fa-user"></i>My Profile</a>
     <a role="button" class="btn btn-danger" href="/admin/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
@@ -29,10 +29,10 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Quản lí khoa</h3>
+                        <h3>Quản lý nhóm</h3>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{route('khoa.create')}}" class="btn btn-primary float-end" >Thêm mới</a>
+                        <a href="{{route('nhom.create')}}" class="btn btn-primary float-end" >Thêm mới</a>
                     </div>
                 </div>
             </div>
@@ -46,24 +46,24 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã khoa</th>
-                            <th>Tên khoa</th>
-                            <th>Ngày thành lập</th>
-                            <th>Mô tả</th>
+                            <th>Tên nhóm</th>
+                            <th>Nhóm trưởng</th>
+                            <th>Thành viên</th>
+                            <th>Thành viên</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($khoa as $k)
+                        @foreach($nhom as $n)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$k->MaKhoa}}</td>
-                            <td>{{$k->TenKhoa}}</td>
-                            <td>{{$k->NgayThanhLap}}</td>
-                            <td>{{$k->MoTa}}</td>
+                            <td>{{$n->TenNhom}}</td>
+                            <td>{{DB::table('sinhviens')->where('MaSinhVien', $n->NhomTruong)->value('Ten')}}</td>
+                            <td>{{DB::table('sinhviens')->where('MaSinhVien', $n->ThanhVien1)->value('Ten')}}</td>
+                            <td>{{DB::table('sinhviens')->where('MaSinhVien', $n->ThanhVien2)->value('Ten')}}</td>
                             <td>
-                                <form action="{{route('khoa.destroy',$k->id)}}" method="POST">
-                                    <a href="{{route('khoa.edit',$k->id)}}" class="btn btn-info">Sửa</a>
+                                <form action="{{route('nhom.destroy',$n->id)}}" method="POST">
+                                    <a href="{{route('nhom.edit',$n->id)}}" class="btn btn-info">Sửa</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Xóa</button>
@@ -74,7 +74,7 @@
                     </tbody>
                 </table>
             </div>
-            {{$khoa->links()}}
+            {{$nhom->links()}}
         </div>
     </div>
 @endsection

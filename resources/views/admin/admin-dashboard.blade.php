@@ -51,6 +51,7 @@
                 <li><a class="dropdown-item" href="/admin/sinhvien">Quản lí sinh viên</a></li>
                 <li><a class="dropdown-item" href="/admin/hoidong">Quản lí hội đồng</a></li>
                 <li><a class="dropdown-item" href="/admin/doan">Quản lí đồ án</a></li>
+                <li><a class="dropdown-item" href="/admin/nhom">Quản lí nhóm</a></li>
                 <li>
                     <hr class="dropdown-divider">
                 </li>

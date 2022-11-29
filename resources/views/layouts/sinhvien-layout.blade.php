@@ -227,7 +227,7 @@
                             <a href="#">Đăng ký đề tài</a>
                         </li>
                         <li>
-                            <a href="#">Tạo nhóm</a>
+                            <a href="/sv/nhom">Tạo nhóm</a>
                         </li>
                         <li>
                             <a href="#">Page 3</a>
