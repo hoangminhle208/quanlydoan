@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doan;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class DoanController extends Controller
 {
     /**
@@ -25,6 +25,8 @@ class DoanController extends Controller
      */
     public function create()
     {
+        if(Auth::user()->userType=='SV')
+            return view('sinhvien.detai.create');
         return view('admin.doan.doan-create');
     }
 

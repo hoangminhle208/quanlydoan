@@ -224,7 +224,7 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chức năng</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="/sv/dkdt">Đăng ký đề tài</a>
+                            <a href="/sv/doan/create">Đăng ký đề tài</a>
                         </li>
                         <li>
                             <a href="/sv/nhom">Tạo nhóm</a>

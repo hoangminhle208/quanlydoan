@@ -38,7 +38,7 @@ use App\Models\Sinhvien;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/sv/dkdt',[DoanController::class,'store']);
+//Route::get('/sv/dkdt',SvDoanController::class);
 
 Route::get('/sv/dsnhom',[NhomController::class,'index']);
 
