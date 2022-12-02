@@ -38,10 +38,11 @@ use App\Models\Sinhvien;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/sv/dkdt',[DoanController::class,'store']);
+
+Route::get('/sv/dsnhom',[NhomController::class,'index']);
 
 Route::get('/sv/nhom',[NhomController::class,'create']);
-
-//Route::resource('/sv/nhom',NhomController::class);
 
 Route::resource('/admin/nhom',NhomController::class)->middleware('AdminRole');
 

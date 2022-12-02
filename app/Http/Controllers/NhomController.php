@@ -15,6 +15,8 @@ class NhomController extends Controller
     public function index()
     {
         $nhom=Nhom::paginate(9);
+        if(Auth::user()->userType=='SV')
+            return view('sinhvien.nhom.index',compact('nhom'))->with('i',(request()->input('page',1)-1)*9);
         return view('admin.nhom.nhom-index',compact('nhom'))->with('i',(request()->input('page',1)-1)*9);
     }
 
@@ -39,6 +41,8 @@ class NhomController extends Controller
     public function store(Request $request)
     {
         Nhom::create($request->all());
+        if(Auth::user()->userType=='SV')
+            return redirect()->route('sv.nhom')->with('thongbao','Thêm nhóm thành công');
         return redirect()->route('nhom.index')->with('thongbao','Thêm nhóm thành công');
     }
 
