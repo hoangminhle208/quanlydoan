@@ -15,6 +15,7 @@ use App\Http\Controllers\SinhvienController;
 use App\Http\Controllers\SvDoanController;
 use App\Http\Controllers\SvGiangvienController;
 use App\Http\Controllers\SvHoidongController;
+use App\Http\Controllers\SvNhomController;
 use App\Http\Controllers\SvSinhvienController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SvprofileController;
@@ -40,9 +41,8 @@ use App\Models\Sinhvien;
 */
 //Route::get('/sv/dkdt',SvDoanController::class);
 
-Route::get('/sv/dsnhom',[NhomController::class,'index']);
 
-Route::get('/sv/nhom',[NhomController::class,'create']);
+Route::resource('/sv/nhoms',SvNhomController::class);
 
 Route::resource('/admin/nhom',NhomController::class)->middleware('AdminRole');
 
@@ -54,7 +54,7 @@ Route::resource('/sv/giaovien',SvGiangvienController::class);
 
 Route::resource('/sv/sinhvien',SvSinhvienController::class);
 
-Route::resource('/sv/doan',SvDoanController::class);
+Route::resource('/sv/doans',SvDoanController::class);
 
 Route::resource('/admin/user',UserController::class)->middleware('AdminRole');
 

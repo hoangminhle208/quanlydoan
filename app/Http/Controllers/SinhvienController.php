@@ -12,9 +12,21 @@ class SinhvienController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sinhvien=Sinhvien::paginate(9);
+        // $sinhvien=Sinhvien::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $sinhvien = Sinhvien::where(function ($query) use ($search){
+                $query->where('Ten', 'like', '%'.$search.'%')
+                    ->orWhere('MaSinhVien', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $sinhvien->appends(['key' => $search]);
+        }
+        else{
+            $sinhvien = Sinhvien::paginate(9);
+        }
         return view('admin.sinhvien.sinhvien-index',compact('sinhvien'))->with('i',(request()->input('page',1)-1)*9);
     }
 

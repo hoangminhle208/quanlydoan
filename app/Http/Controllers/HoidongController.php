@@ -14,9 +14,21 @@ class HoidongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $hoidong=Hoidong::paginate(9);
+        // $hoidong=Hoidong::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $hoidong = Hoidong::where(function ($query) use ($search){
+                $query->where('TenHoiDong', 'like', '%'.$search.'%')
+                    ->orWhere('MaHoiDong', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $hoidong->appends(['key' => $search]);
+        }
+        else{
+            $hoidong = Hoidong::paginate(9);
+        }
         return view('admin.hoidong.hoidong-index',compact('hoidong'))->with('i',(request()->input('page',1)-1)*9);
     }
 

@@ -12,9 +12,21 @@ class GiaovienController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $giaovien=Giaovien::paginate(9);
+        // $giaovien=Giaovien::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $giaovien = Giaovien::where(function ($query) use ($search){
+                $query->where('Ten', 'like', '%'.$search.'%')
+                    ->orWhere('MaGiaoVien', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $giaovien->appends(['key' => $search]);
+        }
+        else{
+            $giaovien = Giaovien::paginate(9);
+        }
         return view('admin.giaovien.giaovien-index',compact('giaovien'))->with('i',(request()->input('page',1)-1)*9);
     }
 

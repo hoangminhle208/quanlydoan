@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Lop;
-
-class LopController extends Controller
+use App\Models\Nhom;
+class SvNhomController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,20 +13,19 @@ class LopController extends Controller
      */
     public function index(Request $request)
     {
-        // $lop=Lop::paginate(9);
         $search =  $request->input('key');
         if($search!=""){
-            $lop = Lop::where(function ($query) use ($search){
+            $nhom = Nhom::where(function ($query) use ($search){
                 $query->where('MaLop', 'like', '%'.$search.'%');
                     
             })
             ->paginate(9);
-            $lop->appends(['key' => $search]);
+            $nhom->appends(['key' => $search]);
         }
         else{
-            $lop = Lop::paginate(9);
+            $nhom = Nhom::paginate(9);
         }
-        return view('admin.lop.lop-index',compact('lop'))->with('i',(request()->input('page',1)-1)*9);
+        return view('sinhvien.nhom.index',compact('nhom'))->with('i',(request()->input('page',1)-1)*9);
     }
 
     /**
@@ -37,7 +35,7 @@ class LopController extends Controller
      */
     public function create()
     {
-        return view('admin.lop.lop-create');
+        return view('sinhvien.nhom.create');
     }
 
     /**
@@ -48,8 +46,8 @@ class LopController extends Controller
      */
     public function store(Request $request)
     {
-        Lop::create($request->all());
-        return redirect()->route('lop.index')->with('thongbao','Thêm lớp thành công');
+        Nhom::create($request->all());
+        return redirect()->route('sv.nhoms')->with('thongbao','Thêm nhóm thành công');
     }
 
     /**
@@ -69,9 +67,9 @@ class LopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Lop $lop)
+    public function edit($id)
     {
-        return view('admin.lop.lop-edit',compact('lop'));
+        //
     }
 
     /**
@@ -81,10 +79,9 @@ class LopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Lop $lop)
+    public function update(Request $request, $id)
     {
-        $lop->update($request->all());
-        return redirect()->route('lop.index')->with('thongbao','Cập nhật lớp thành công!');
+        //
     }
 
     /**
@@ -93,9 +90,8 @@ class LopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Lop $lop)
+    public function destroy($id)
     {
-        $lop->delete();
-        return redirect()->route('lop.index')->with('thongbao','Xóa lớp công');
+        //
     }
 }

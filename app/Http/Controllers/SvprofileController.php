@@ -15,20 +15,25 @@ class SvprofileController extends Controller
      */
     public function index()
     {
-        return view('sinhvien.profile.index');
+        $profile=User::all();
+        return view('sinhvien.profile.index',compact('profile'))->with('i',(request()->input('page',1)-1)*9);
     }
     public function profile(){
         return view('sinhvien.profile.profile');
     }
-    
+    public function edit(User $profile)
+    {
+        return view('sinhvien.profile.edit',compact('profile'));
+    }
+
     public function store(Request $request)
     {
         User::create($request->all());
-        return redirect()->route('sv.index');
+        return redirect()->route('profile.index');
     }
-    public function update(Request $request,Sinhvien $sinhvien)
+    public function update(Request $request,User $profile)
     {
-        $sinhvien->update($request->all());
-        return redirect()->route('sinhvien.profile.index')->with('thongbao','Cập nhật sinh viên thành công');
+        $profile->update($request->all());
+        return redirect()->route('profile.index');
     }
 }

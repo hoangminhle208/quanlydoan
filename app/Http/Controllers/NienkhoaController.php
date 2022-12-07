@@ -12,9 +12,21 @@ class NienkhoaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $nienkhoa=Nienkhoa::paginate(9);
+        // $nienkhoa=Nienkhoa::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $nienkhoa = Nienkhoa::where(function ($query) use ($search){
+                $query->where('MaNienKhoa', 'like', '%'.$search.'%')
+                    ->orWhere('Nam', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $nienkhoa->appends(['key' => $search]);
+        }
+        else{
+            $nienkhoa= Nienkhoa::paginate(9);
+        }
         return view('admin.nienkhoa.nienkhoa-index',compact('nienkhoa'))->with('i',(request()->input('page',1)-1)*9);
     }
 

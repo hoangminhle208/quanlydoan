@@ -12,9 +12,22 @@ class ChuyennganhController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $chuyennganh=Chuyennganh::paginate(9);
+        // $chuyennganh=Chuyennganh::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $chuyennganh = Chuyennganh::where(function ($query) use ($search){
+                $query->where('TenChuyenNganh', 'like', '%'.$search.'%')
+                    ->orWhere('MaChuyenNganh', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $chuyennganh->appends(['key' => $search]);
+        }
+        else{
+            $chuyennganh = Chuyennganh::paginate(9);
+        }
+
         return view('admin.chuyennganh.chuyennganh-index',compact('chuyennganh'))->with('i',(request()->input('page',1)-1)*9);
     }
 

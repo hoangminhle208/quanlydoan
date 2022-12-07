@@ -42,6 +42,14 @@
                         {{Session::get('thongbao')}}
                     </div>
                 @endif
+                <form action="" class="d-flex flex-row align-items-center flex-wrap">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="key" placeholder="Tìm theo tên hoặc mã đồ án" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -60,7 +68,7 @@
                         @foreach($doan as $da)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td><img src={{$da->HinhAnh}} alt=""></td>
+                            <td><img src={{$da->HinhAnh}} alt="" style="width:75px; height:75px;"></td>
                             <td>{{$da->MaDoAn}}</td>
                             <td>{{$da->TenDetai}}</td>
                             <td> SVTH: {{DB::table('sinhviens')->where('MaSinhVien', $da->SVTH)->value('Ten')}}

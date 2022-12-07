@@ -11,9 +11,21 @@ class KhoaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $khoa=Khoa::paginate(9);
+        // $khoa=Khoa::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $khoa = Khoa::where(function ($query) use ($search){
+                $query->where('TenKhoa', 'like', '%'.$search.'%')
+                    ->orWhere('MaKhoa', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $khoa->appends(['key' => $search]);
+        }
+        else{
+            $khoa = Khoa::paginate(9);
+        }
         return view('admin.khoa.khoa-index',compact('khoa'))->with('i',(request()->input('page',1)-1)*9);
     }
 

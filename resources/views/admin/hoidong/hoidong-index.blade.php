@@ -42,6 +42,14 @@
                         {{Session::get('thongbao')}}
                     </div>
                 @endif
+                <form action="" class="d-flex flex-row align-items-center flex-wrap">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="key" placeholder="Tên hoặc mã hội đồng" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -59,9 +67,9 @@
                         <tr>
                             <td>{{++$i}}</td>
                             <td>{{$hd->MaHoiDong}}</td>
-                            <td><img src={{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaChuTich)->value('HinhAnh')}} alt=""><br> {{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaChuTich)->value('Ten')}}</td>
-                            <td><img src={{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaThuKy)->value('HinhAnh')}} alt=""><br>{{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaThuKy)->value('Ten')}}</td>
-                            <td><img src={{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaGiaoVienPhanBien)->value('HinhAnh')}} alt=""><br>{{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaGiaoVienPhanBien)->value('Ten')}}</td>
+                            <td><img style="width:75px; height:75px;" src={{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaChuTich)->value('HinhAnh')}} alt=""><br> {{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaChuTich)->value('Ten')}}</td>
+                            <td><img style="width:75px; height:75px;" src={{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaThuKy)->value('HinhAnh')}} alt=""><br>{{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaThuKy)->value('Ten')}}</td>
+                            <td><img style="width:75px; height:75px;" src={{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaGiaoVienPhanBien)->value('HinhAnh')}} alt=""><br>{{DB::table('giaoviens')->where('MaGiaoVien', $hd->MaGiaoVienPhanBien)->value('Ten')}}</td>
                             <td>{{$hd->MoTa}}</td>
                             <td>
                                 <form action="{{route('hoidong.destroy',$hd->id)}}" method="POST">

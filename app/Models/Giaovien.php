@@ -18,4 +18,10 @@ class Giaovien extends Model
         'BoMon',
         'MaKhoa',
     ];
+    public function scopeSearch($query){
+        if($key=request()->key){
+            $query=$query->where('Ten','like','%'.$key.'%');
+        }
+        return $query;
+    }
 }

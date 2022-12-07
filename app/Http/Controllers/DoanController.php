@@ -12,9 +12,21 @@ class DoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $doan=Doan::paginate(9);
+        // $doan=Doan::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $doan = Doan::where(function ($query) use ($search){
+                $query->where('TenDetai', 'like', '%'.$search.'%')
+                    ->orWhere('MaDoAn', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $doan->appends(['key' => $search]);
+        }
+        else{
+            $doan = Doan::paginate(9);
+        }
         return view('admin.doan.doan-index',compact('doan'))->with('i',(request()->input('page',1)-1)*9);
     }
 

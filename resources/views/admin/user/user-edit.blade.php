@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <strong>Loại user</strong>
-                                <select class="form-select form-select-sm" name="Khoa" aria-label=".form-select-lg example">
+                                <select class="form-select form-select-sm" name="userType" aria-label=".form-select-lg example">
                                     <option value="ADM">Admin</option>
                                     <option value="SV">Sinh viên</option>
                                     <option value="GV">Giáo viên</option>

@@ -12,10 +12,16 @@ class SvDoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $doan=Doan::paginate(9);
-        return view('sinhvien.detai.index',compact('doan'))->with('i',(request()->input('page',1)-1)*9);
+        // $doan=Doan::paginate(9);
+        $key= $request->input('key');
+    // Search in the title and body columns from the posts table
+        $doan = Doan::query()
+        ->where('TenDetai', 'LIKE', "%{$key}%")
+        ->orWhere('MaDoAn', 'LIKE', "%{$key}%")
+        ->get();
+        return view('sinhvien.doan.index',compact('doan'))->with('i',(request()->input('page',1)-1)*9);
     }
 
     /**
@@ -25,7 +31,7 @@ class SvDoanController extends Controller
      */
     public function create()
     {
-        return view('sinhvien.detai.create');
+        return view('sinhvien.doan.create');
     }
 
     /**
@@ -37,7 +43,7 @@ class SvDoanController extends Controller
     public function store(Request $request)
     {
         Doan::create($request->all());
-        return redirect()->route('doan.index')->with('thongbao','Thêm đồ án thành công');
+        return redirect()->route('doans.index')->with('thongbao','Thêm đồ án thành công');
     }
 
     /**
@@ -59,7 +65,7 @@ class SvDoanController extends Controller
      */
     public function edit(Doan $doan)
     {
-        return view('sinhvien.detai.edit',compact('doan'));
+        return view('sinhvien.doan.edit',compact('doan'));
     }
 
     /**

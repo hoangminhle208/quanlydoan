@@ -42,6 +42,14 @@
                         {{Session::get('thongbao')}}
                     </div>
                 @endif
+                <form action="" class="d-flex flex-row align-items-center flex-wrap">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="key" placeholder="Tìm theo tên hoặc mã giáo viên" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -58,7 +66,7 @@
                         @foreach($giaovien as $gv)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td><img src={{$gv->HinhAnh}} alt=""></td>
+                            <td><img src={{$gv->HinhAnh}} alt="" style="width:75px; height:75px;"></td>
                             <td>{{$gv->MaGiaoVien}}</td>
                             <td>{{$gv->Ten}}</td>
                             <td> Email: {{$gv->Email}}

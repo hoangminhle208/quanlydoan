@@ -4,7 +4,7 @@
     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <a role="button" class="btn btn-success" href="/admin/dashboard"><i class="fa-solid fa-house"></i>Home</a>
     <a role="button" class="btn btn-info" href="/admin/profile"><i class="fa-solid fa-user"></i>My Profile</a>
-    <a role="button" class="btn btn-danger" href="/admin/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+    <a role="button" class="btn btn-danger" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
 
     <div class="btn-group" role="group">
         <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -24,6 +24,7 @@
         <li><a class="dropdown-item" href="/admin/nhom">Quản lí nhóm</a></li>
         </ul>
     </div>
+    
     </div>
         <div class="card">
             <div class="card-header">
@@ -42,6 +43,14 @@
                         {{Session::get('thongbao')}}
                     </div>
                 @endif
+                <form action="" class="d-flex flex-row align-items-center flex-wrap">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="key" placeholder="Tìm theo tên hoặc mã chuyên ngành" required/>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -75,6 +84,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                
             </div>
             {{$chuyennganh->links()}}
         </div>

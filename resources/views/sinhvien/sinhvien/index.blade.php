@@ -1,5 +1,13 @@
 @extends('\layouts\sinhvien-layout')
 @section('content')
+<form action="" class="form-inline">
+    <div class="form-group">
+        <input class="form-control" type="text" name="key" placeholder="Tìm theo tên hoặc mã sinh viên" required/>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        <i class="fas fa-search"></i>
+    </button>
+</form>
 <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex justify-end m-2 p-2">

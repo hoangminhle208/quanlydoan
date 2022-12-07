@@ -201,7 +201,7 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Thông tin</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="/sv/doan">Đề tài</a>
+                            <a href="/sv/doans">Đề tài</a>
                         </li>
                         <li>
                             <a href="/sv/sinhvien">Sinh viên</a>
@@ -224,13 +224,13 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chức năng</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="/sv/doan/create">Đăng ký đề tài</a>
+                            <a href="/sv/doans/create">Đăng ký đề tài</a>
                         </li>
                         <li>
-                            <a href="/sv/nhom">Tạo nhóm</a>
+                            <a href="/sv/nhoms/create">Tạo nhóm</a>
                         </li>
                         <li>
-                            <a href="/sv/dsnhom">Danh sách nhóm</a>
+                            <a href="/sv/nhoms">Danh sách nhóm</a>
                         </li>
                     </ul>
                 </li>

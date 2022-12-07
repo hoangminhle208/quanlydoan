@@ -12,9 +12,21 @@ class NhomController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $nhom=Nhom::paginate(9);
+        // $nhom=Nhom::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $nhom = Nhom::where(function ($query) use ($search){
+                $query->where('MaLop', 'like', '%'.$search.'%');
+                    
+            })
+            ->paginate(9);
+            $nhom->appends(['key' => $search]);
+        }
+        else{
+            $nhom = Nhom::paginate(9);
+        }
         if(Auth::user()->userType=='SV')
             return view('sinhvien.nhom.index',compact('nhom'))->with('i',(request()->input('page',1)-1)*9);
         return view('admin.nhom.nhom-index',compact('nhom'))->with('i',(request()->input('page',1)-1)*9);

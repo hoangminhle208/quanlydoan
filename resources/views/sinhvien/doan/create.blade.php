@@ -7,12 +7,12 @@
                         <h3>Thêm đề tài</h3>
                     </div>
                     <div class="col-md-6">
-                        <a href="/sv/doan" class="btn btn-primary float-end">Danh sách đề tài</a>
+                        <a href="{{route('doans.index')}}" class="btn btn-primary float-end">Danh sách đề tài</a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <form action="/sv/doan/create" method="POST">
+                <form action="{{route('doans.store')}}" method="POST" >
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <strong>Chọn sinh viên thực hiện</strong>
                                 <br>
-                                <select class="form-select form-select-sm" name="NhomTruong" aria-label=".form-select-lg example">
+                                <select class="form-select form-select-sm" name="SVTH" aria-label=".form-select-lg example">
                                     @foreach(DB::table('sinhviens')->pluck('MaSinhVien') as $masv)
                                     <option value={{$masv}}>{{DB::table('sinhviens')->where('MaSinhVien', $masv)->value('Ten');}}</option>
                                     @endforeach
@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 <strong>Chọn giáo viên hướng dẫn</strong>
                                 <br>
-                                <select class="form-select form-select-sm" name="ThanhVien1" aria-label=".form-select-lg example">
+                                <select class="form-select form-select-sm" name="GVHD" aria-label=".form-select-lg example">
                                     @foreach(DB::table('giaoviens')->pluck('MaGiaoVien') as $magv)
                                     <option value={{$magv}}>{{DB::table('giaoviens')->where('MaGiaoVien', $magv)->value('Ten');}}</option>
                                     @endforeach
@@ -79,7 +79,7 @@
                             </div>
                             <div class="form-group">
                                 <strong>Chọn trạng thái</strong>
-                                <select class="form-select form-select-sm" name="Trạng thái" aria-label=".form-select-lg example" disabled>
+                                <select class="form-select form-select-sm" name="TrangThai" aria-label=".form-select-lg example" disabled>
                                     <option value="WAIT">WAIT</option>
                                 </select>
                             </div>

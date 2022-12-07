@@ -12,9 +12,21 @@ class HedaotaoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $hedaotao=Hedaotao::paginate(9);
+        // $hedaotao=Hedaotao::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $hedaotao = Hedaotao::where(function ($query) use ($search){
+                $query->where('MaHeDaoTao', 'like', '%'.$search.'%')
+                    ->orWhere('TenHeDaoTao', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $hedaotao->appends(['key' => $search]);
+        }
+        else{
+            $hedaotao = Hedaotao::paginate(9);
+        }
         return view('admin.hedaotao.hedaotao-index',compact('hedaotao'))->with('i',(request()->input('page',1)-1)*9);
     }
 

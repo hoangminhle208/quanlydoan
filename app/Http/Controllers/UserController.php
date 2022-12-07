@@ -13,9 +13,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $user=User::paginate(9);
+        // $user=User::paginate(9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $user = User::where(function ($query) use ($search){
+                $query->where('name', 'like', '%'.$search.'%')
+                    ->orWhere('email', 'like', '%'.$search.'%');
+            })
+            ->paginate(9);
+            $user->appends(['key' => $search]);
+        }
+        else{
+            $user = User::paginate(9);
+        }
         return view('admin.user.user-index',compact('user'))->with('i',(request()->input('page',1)-1)*9);
     }
 
