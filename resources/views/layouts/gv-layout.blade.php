@@ -192,7 +192,7 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3><a href="/sv/index">Trang chủ</a></h3>
+                <h3><a href="{{route('gv-index')}}">Trang chủ - Giáo viên</a></h3>
             </div>
 
             <ul class="list-unstyled components">
@@ -201,16 +201,16 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Thông tin</a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="/sv/doans">Đề tài</a>
+                            <a href="/gvdoan">Đề tài</a>
                         </li>
                         <li>
-                            <a href="/sv/sinhvien">Sinh viên</a>
+                            <a href="{{route('gv.sinhvien')}}">Sinh viên</a>
                         </li>
                         <li>
-                            <a href="/sv/giaovien">Giảng viên</a>
+                            <a href="{{route('gv.gv')}}">Giảng viên</a>
                         </li>
                         <li>
-                            <a href="/sv/hoidong">Hội đồng</a>
+                            <a href="/gv-hoi-dong">Hội đồng</a>
                         </li>
                         <li>
                             <a href="#">....</a>
@@ -224,13 +224,13 @@
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chức năng</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="/sv/doans/create">Đăng ký đề tài</a>
+                            <a href="#">Đăng ký đề tài</a>
                         </li>
                         <li>
-                            <a href="/sv/nhoms/create">Tạo nhóm</a>
+                            <a href="#">Tạo nhóm</a>
                         </li>
                         <li>
-                            <a href="/sv/nhoms">Danh sách nhóm</a>
+                            <a href="#">Danh sách nhóm</a>
                         </li>
                     </ul>
                 </li>
@@ -280,7 +280,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/sv/index">Home</a>
+                                <a class="nav-link" href="/gv-index">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Page</a>

@@ -33,7 +33,7 @@
                         <tr>
                             <td><img src="" alt=""></td>
                             <td>{{$u->name}}</td>
-                            <td>{{$u->ma}}</td>
+                            <td>{{$u->userType}}</td>
                             <td>{{$u->email}}</td>
                             <td>
                                 <form action="{{route('user.destroy',$u->id)}}" method="POST">

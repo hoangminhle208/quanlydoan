@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doan;
-use App\Models\Sinhvien;
 use Illuminate\Http\Request;
-
-class SvDoanController extends Controller
+use App\Models\Doan;
+use App\Models\Hoidong;
+use App\Models\Sinhvien;
+class GvDoanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +15,14 @@ class SvDoanController extends Controller
      */
     public function index(Request $request)
     {
-        // $doan=Doan::paginate(9);
         $key= $request->input('key');
     // Search in the title and body columns from the posts table
         $doan = Doan::query()
         ->where('TenDetai', 'LIKE', "%{$key}%")
         ->orWhere('MaDoAn', 'LIKE', "%{$key}%")
         ->get();
-        return view('sinhvien.doan.index',compact('doan'))->with('i',(request()->input('page',1)-1)*9);
+        $hoidong=Hoidong::all();
+        return view('giaovien.doan.index',compact('doan','hoidong'))->with('i',(request()->input('page',1)-1)*9);
     }
 
     /**
@@ -32,8 +32,7 @@ class SvDoanController extends Controller
      */
     public function create()
     {
-        $sinhvien=Sinhvien::all();
-        return view('sinhvien.doan.create',compact('sinhvien'));
+        //
     }
 
     /**
@@ -44,8 +43,7 @@ class SvDoanController extends Controller
      */
     public function store(Request $request)
     {
-        Doan::create($request->all());
-        return redirect()->route('doans.index')->with('thongbao','Thêm đồ án thành công');
+        //
     }
 
     /**
@@ -65,9 +63,9 @@ class SvDoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doan $doan)
+    public function edit(Doan $gvdoan)
     {
-        return view('sinhvien.doan.edit',compact('doan'));
+        return view('giaovien.doan.edit',compact('gvdoan'));
     }
 
     /**
@@ -77,10 +75,10 @@ class SvDoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Doan $doan)
+    public function update(Request $request, Doan $gvdoan)
     {
-        $doan->update($request->all());
-        return redirect()->route('doan.index')->with('thongbao','Cập nhật đồ án thành công');
+        $gvdoan->update($request->all());
+        return redirect()->route('gvdoan.index')->with('thongbao','Cập nhật đồ án thành công');
     }
 
     /**
@@ -89,9 +87,8 @@ class SvDoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doan $doan)
+    public function destroy($id)
     {
-        $doan->delete();
-        return redirect()->route('doan.index')->with('thongbao','Xóa đồ án thành công');
+        //
     }
 }

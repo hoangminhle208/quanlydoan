@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('hoidongs', function (Blueprint $table) {
             $table->id();
             $table->string('MaHoiDong')->unique();
+            $table->string('TenHoiDong');
             $table->string('MaChuTich')->references('MaGiaoVien')->on('giaoviens');
             $table->string('MaThuKy')->references('MaGiaoVien')->on('giaoviens');
             $table->string('MaGiaoVienPhanBien')->references('MaGiaoVien')->on('giaoviens');

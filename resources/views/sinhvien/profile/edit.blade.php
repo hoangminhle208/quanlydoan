@@ -18,10 +18,6 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <strong>Mã</strong>
-                                <input type="text" name="ma" value="{{$profile->ma}}" class="form-control" placeholder="">
-                            </div>
-                            <div class="form-group">
                                 <strong>Tên</strong>
                                 <input type="text" name="name" value="{{$profile->name}}" class="form-control" placeholder="">
                             </div>

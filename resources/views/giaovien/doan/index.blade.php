@@ -1,4 +1,4 @@
-@extends('\layouts\sinhvien-layout')
+@extends('\layouts\gv-layout')
 @section('content')
 <form action="" class="form-inline">
     <div class="form-group">
@@ -57,10 +57,67 @@
                                             class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
                                             Trạng thái
                                         </th>
+                                        <th>
+                                            Thao tác
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($doan as $da)
+                                        @foreach($hoidong as $hd)
+                                        @if(($hd->MaChuTich==Auth::user()->id)||($hd->MaThuKy==Auth::user()->id)||($hd->MaGiaoVienPhanBien==Auth::user()->id))
+                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $da->MaDoAn }}
+                                            </td>
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <img src="{{$da->HinhAnh}}" style="width:75px; height:75px;"
+                                                    class="w-16 h-16 rounded">
+                                            </td>
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ $da->TenDetai }}
+                                            </td>
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ DB::table('chuyennganhs')->where('MaChuyenNganh', $da->ChuyenNganh)->value('TenChuyenNganh') }}
+                                            </td>
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ DB::table('nhoms')->where('id', $da->Nhom)->value('TenNhom') }}
+                                            </td>
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ DB::table('giaoviens')->where('MaGiaoVien', $da->GVHD)->value('Ten') }}
+                                            </td>
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                {{ DB::table('hoidongs')->where('MaHoiDong', $da->HoiDong)->value('TenHoiDong') }}
+                                            </td>
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                <button><a href="{{$da->Link}}" role="button" target="_blank">Link</a></button>
+                                            </td>
+                                            <td
+                                                class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                                @if($da->TrangThai=='DONE')
+                                                <strong style="color:green;background-color:aquamarine;">{{$da->TrangThai}}</strong>
+                                                @elseif($da->TrangThai=='WAIT')
+                                                <strong style="color:yellow;background-color:red;">{{$da->TrangThai}}</strong>
+                                                @else
+                                                <strong style="color:red;background-color:aquamarine;">{{$da->TrangThai}}</strong>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <form action="{{route('gvdoan.destroy',$da->id)}}" method="POST">
+                                                <a href="{{route('gvdoan.edit',$da->id)}}" class="btn btn-info">Duyệt</a>
+                                                @csrf
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @else
                                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -99,9 +156,12 @@
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 <strong>{{$da->TrangThai}}</strong>
                                             </td>
-                                        </tr>
-                                    @endforeach
+                                            <td>
 
+                                            </td>
+                                        @endif
+                                        @endforeach
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

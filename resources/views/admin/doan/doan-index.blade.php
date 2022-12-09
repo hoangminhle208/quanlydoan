@@ -57,7 +57,7 @@
                             <th>Hình ảnh</th>
                             <th>Mã đồ án</th>
                             <th>Tên đồ án</th>
-                            <th>Sinh viên TH/Giáo viên HD</th>
+                            <th>Nhóm SVTH/Giáo viên HD</th>
                             <th>Hội đồng/Chuyên ngành/Khoa</th>
                             <th>Link đồ án</th>
                             <th>Trạng thái</th>
@@ -71,13 +71,13 @@
                             <td><img src={{$da->HinhAnh}} alt="" style="width:75px; height:75px;"></td>
                             <td>{{$da->MaDoAn}}</td>
                             <td>{{$da->TenDetai}}</td>
-                            <td> SVTH: {{DB::table('sinhviens')->where('MaSinhVien', $da->SVTH)->value('Ten')}}
+                            <td> SVTH: {{DB::table('nhoms')->where('id', $da->Nhom)->value('TenNhom')}}
                                 <br>GVHD:{{DB::table('giaoviens')->where('MaGiaoVien', $da->GVHD)->value('Ten')}}
                                 
                             </td>
                             <td>Khoa: {{DB::table('khoas')->where('MaKhoa', $da->Khoa)->value('TenKhoa')}}
                                 <br>Chuyên ngành: {{DB::table('chuyennganhs')->where('MaChuyenNganh', $da->ChuyenNganh)->value('TenChuyenNganh')}}
-                                <br>Hội đồng: {{DB::table('hoidongs')->where('MaHoiDong', $da->HoiDong)->value('MaHoiDong')}}
+                                <br>Hội đồng: {{DB::table('hoidongs')->where('MaHoiDong', $da->HoiDong)->value('TenHoiDong')}}
                             </td>
                             
                             <td><a role="button" class="btn btn-success" href={{$da->Link}}</a>Link</a></td>

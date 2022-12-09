@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Sinhvien;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class SvSinhvienController extends Controller
 {
     public function index(Request $request){

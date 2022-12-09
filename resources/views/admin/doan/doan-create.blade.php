@@ -54,10 +54,10 @@
                                 <input type="text" name="TenDetai" class="form-control" placeholder="Nhập tên đồ án">
                             </div>
                             <div class="form-group">
-                                <strong>Chọn sinh viên thực hiện</strong>
-                                <select class="form-select form-select-sm" name="SVTH" aria-label=".form-select-lg example">
-                                    @foreach(DB::table('sinhviens')->pluck('MaSinhVien') as $masv)
-                                    <option value={{$masv}}>{{DB::table('sinhviens')->where('MaSinhVien', $masv)->value('Ten');}}</option>
+                                <strong>Chọn nhóm sinh viên thực hiện</strong>
+                                <select class="form-select form-select-sm" name="Nhom" aria-label=".form-select-lg example">
+                                    @foreach(DB::table('nhoms')->pluck('id') as $id)
+                                    <option value={{$id}}>{{DB::table('nhoms')->where('id', $id)->value('TenNhom');}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -73,7 +73,7 @@
                                 <strong>Chọn hội đồng</strong>
                                 <select class="form-select form-select-sm" name="HoiDong" aria-label=".form-select-lg example">
                                     @foreach(DB::table('hoidongs')->pluck('MaHoiDong') as $mahd)
-                                    <option value={{$mahd}}>{{DB::table('hoidongs')->where('MaHoiDong', $mahd)->value('MaHoiDong');}}</option>
+                                    <option value={{$mahd}}>{{DB::table('hoidongs')->where('MaHoiDong', $mahd)->value('TenHoiDong');}}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -46,6 +46,10 @@
                                 <input type="text" name="MaHoiDong" class="form-control" placeholder="Nhập mã hội đồng">
                             </div>
                             <div class="form-group">
+                                <strong>Tên hội đồng</strong>
+                                <input type="text" name="TenHoiDong" class="form-control" placeholder="Nhập tên hội đồng">
+                            </div>
+                            <div class="form-group">
                                 <strong>Chọn chủ tịch</strong>
                                 <select class="form-select form-select-sm" name="MaChuTich" aria-label=".form-select-lg example">
                                     @foreach(DB::table('giaoviens')->pluck('MaGiaoVien') as $magv)

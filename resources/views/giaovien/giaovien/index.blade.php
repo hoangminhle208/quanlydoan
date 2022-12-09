@@ -1,4 +1,4 @@
-@extends('\layouts\sinhvien-layout')
+@extends('\layouts\gv-layout')
 @section('content')
 <form action="" class="form-inline">
     <div class="form-group">
@@ -70,7 +70,8 @@
                                             <td
                                                 class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                 Email: {{$gv->Email}}
-                                                <br>Quê quán: {{$gv->QueQuan}}
+                                                <br>
+                                                Quê quán: {{$gv->QueQuan}}
                                             </td>
                                         </tr>
                                     @endforeach

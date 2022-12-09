@@ -1,6 +1,6 @@
-@extends('\layouts\sinhvien-layout')
+@extends('\layouts\gv-layout')
 @section('content')
-<h1>Website đăng ký đề tài HCMUTE</h1>
+<h1>Website quản lý đề tài - Giáo viên</h1>
 <h2>Thông báo</h2>
 <table class="table table-bordered">
                     <thead>

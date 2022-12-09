@@ -21,7 +21,7 @@ class HomeController extends Controller
             return redirect()->route('sv.index');
         }
         if(Auth::user()->userType==='GV')
-            return redirect()->route('sinhvien.index');
+            return redirect()->route('gv-index');
     }
     
 }

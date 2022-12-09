@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Giaovien;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class SvGiangvienController extends Controller
 {
     public function index(Request $request){
@@ -21,6 +21,8 @@ class SvGiangvienController extends Controller
         ->orWhere('MaGiaoVien', 'LIKE', "%{$key}%")
         ->get();
     // Return the search view with the resluts compacted
+        if(Auth::user()->userType=='GV')
+            return view('giaovien.giaovien.index',compact('giaovien'));
         return view('sinhvien.giaovien.index', compact('giaovien'));
         }
 }

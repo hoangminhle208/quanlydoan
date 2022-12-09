@@ -12,7 +12,7 @@ class Doan extends Model
         'HinhAnh',
         'MaDoAn',
         'TenDetai',
-        'SVTH',
+        'Nhom',
         'GVHD',
         'HoiDong',
         'ChuyenNganh',
