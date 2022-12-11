@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('MaChuyenNganh')->unique();
             $table->string('TenChuyenNganh');
             $table->string('MaKhoa')->references('MaKhoa')->on('khoas');
-            $table->string('MoTa');
+            $table->string('MoTa')->nullable();
             $table->timestamps();
         });
     }

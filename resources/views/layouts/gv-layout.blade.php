@@ -218,13 +218,13 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/sv/profile">Tài khoản</a>
+                    <a href="{{route('gvprofile.index')}}">Tài khoản</a>
                 </li>
                 <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Chức năng</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
-                            <a href="#">Đăng ký đề tài</a>
+                            <a href="{{route('gv.duyet')}}">Duyệt đề tài</a>
                         </li>
                         <li>
                             <a href="#">Tạo nhóm</a>

@@ -20,8 +20,13 @@ use App\Http\Controllers\SvNhomController;
 use App\Http\Controllers\SvSinhvienController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SvprofileController;
+use App\Http\Controllers\GvprofileController;
 use App\Http\Controllers\SvThongbaoController;
 use App\Http\Controllers\GvThongbaoController;
+use App\Http\Controllers\TkChuyennganhController;
+use App\Http\Controllers\TkGiaovienController;
+use App\Http\Controllers\TkHoidongController;
+use App\Http\Controllers\TkSinhvienController;
 use App\Models\Chuyennganh;
 use App\Models\Doan;
 use App\Models\Giaovien;
@@ -42,7 +47,18 @@ use App\Models\Sinhvien;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/sv/dkdt',SvDoanController::class);
+Route::resource('/tkhoidong',TkHoidongController::class);
+
+Route::resource('/tksinhvien',TkSinhvienController::class);
+
+Route::resource('/tkgiaovien',TkGiaovienController::class);
+
+Route::resource('/tkchuyennganh',TkChuyennganhController::class);
+
+Route::resource('/gvprofile',GvprofileController::class)->middleware('GiaovienRole');
+
+Route::get('gv-duyet',[GvDoanController::class,'duyetindex'])->name('gv.duyet')->middleware('GiaovienRole');
+
 Route::get('/gv-giao-vien',[SvGiangvienController::class,'index'])->name('gv.gv')->middleware('GiaovienRole');
 
 Route::resource('/gvdoan',GvDoanController::class)->middleware('GiaovienRole');
@@ -98,15 +114,24 @@ Route::get('/admin/dashboard',function(){
     $sinhvien_count=Sinhvien::count();
     $doan_count=Doan::count();
     return view('admin.admin-dashboard',compact('nienkhoa_count','khoa_count','chuyennganh_count','hedaotao_count','lop_count','giaovien_count','hoidong_count','sinhvien_count','doan_count'));
-})->name('admin.dashboard');
+})->name('admin.dashboard')->middleware('AdminRole');
 
 Route::get('/sv/index',[SvThongbaoController::class,'index'])->name('sv.index')->middleware('SinhvienRole');
 
 Route::get('/gv-index',[GvThongbaoController::class,'index'])->name('gv-index')->middleware('GiaovienRole');
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
+Route::get('/truongkhoa/index',function(){
+    $nienkhoa_count=Nienkhoa::count();
+    $khoa_count=Khoa::count();
+    $chuyennganh_count=Chuyennganh::count();
+    $hedaotao_count=Hedaotao::count();
+    $lop_count=Lop::count();
+    $giaovien_count=Giaovien::count();
+    $hoidong_count=Hoidong::count();
+    $sinhvien_count=Sinhvien::count();
+    $doan_count=Doan::count();
+    return view('truongkhoa.index',compact('nienkhoa_count','khoa_count','chuyennganh_count','hedaotao_count','lop_count','giaovien_count','hoidong_count','sinhvien_count','doan_count'));
+})->name('truongkhoa.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

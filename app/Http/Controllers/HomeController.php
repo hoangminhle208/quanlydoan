@@ -22,6 +22,8 @@ class HomeController extends Controller
         }
         if(Auth::user()->userType==='GV')
             return redirect()->route('gv-index');
+        if(Auth::user()->userType==='TK')
+            return redirect()->route('truongkhoa.index');
     }
     
 }

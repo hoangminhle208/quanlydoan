@@ -17,25 +17,6 @@ class DataSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => Str::random(10),
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
-        ]);
-        DB::table('chuyennganhs')->insert([
-            'MaNienKhoa' => Str::random(10),
-            'Nam' => Str::random(10),
-        ]);
-        DB::table('khoas')->insert([
-            'MaKhoa' => Str::random(10),
-            'TenKhoa' => Str::random(10),
-            'NgayThanhLap' => Date::random(),
-            'MoTa' => Str::random(10),
-        ]);
-        DB::table('hedaotaos')->insert([
-            'MaHeDaoTao' => Str::random(10),
-            'TenHeDaoTao' => Str::random(10),
-            'MoTa' => Str::random(10),
-        ]);
+        
     }
 }

@@ -51,10 +51,8 @@
                             <div class="form-group">
                                 <strong>Chọn hội đồng</strong>
                                 <br>
-                                <select class="form-select form-select-sm" name="HoiDong" aria-label=".form-select-lg example">
-                                    @foreach(DB::table('hoidongs')->pluck('MaHoiDong') as $mahd)
-                                    <option value={{$mahd}}>{{DB::table('hoidongs')->where('MaHoiDong', $mahd)->value('TenHoiDong');}}</option>
-                                    @endforeach
+                                <select class="form-select form-select-sm" name="HoiDong" aria-label=".form-select-lg example" disabled>
+                                    <option value="">NULL</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -62,7 +60,7 @@
                                 <br>
                                 <select class="form-select form-select-sm" name="ChuyenNganh" aria-label=".form-select-lg example">
                                 @foreach($sinhvien as $sv)
-                                @if(Auth::user()->id==$sv->MaSinhVien)
+                                @if(Auth::user()->ma==$sv->MaSinhVien)
                                 <option value={{$sv->ChuyenNganh}}>{{DB::table('chuyennganhs')->where('MaChuyenNganh', $sv->ChuyenNganh)->value('TenChuyenNganh')}}</option>
                                 @endif
                                 @endforeach
@@ -73,7 +71,7 @@
                                 <br>
                                 <select class="form-select form-select-sm" name="Khoa" aria-label=".form-select-lg example">
                                 @foreach($sinhvien as $sv)
-                                @if(Auth::user()->id==$sv->MaSinhVien)
+                                @if(Auth::user()->ma==$sv->MaSinhVien)
                                 <option value={{$sv->Khoa}}>{{DB::table('khoas')->where('MaKhoa', $sv->Khoa)->value('TenKhoa')}}</option>
                                 @endif
                                 @endforeach

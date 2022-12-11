@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('TenDetai');
             $table->string('Nhom')->references('id')->on('nhoms');
             $table->string('GVHD')->references('MaGiaoVien')->on('giaoviens');
-            $table->string('HoiDong')->references('MaHoiDong')->on('hoidongs');
+            $table->string('HoiDong')->references('MaHoiDong')->on('hoidongs')->nullable();
             $table->string('ChuyenNganh')->references('MaChuyenNganh')->on('chuyennganhs');
             $table->string('Khoa')->references('MaKhoa')->on('khoas');
             $table->string('Link');

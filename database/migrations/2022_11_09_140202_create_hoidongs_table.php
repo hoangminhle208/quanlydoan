@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('MaChuTich')->references('MaGiaoVien')->on('giaoviens');
             $table->string('MaThuKy')->references('MaGiaoVien')->on('giaoviens');
             $table->string('MaGiaoVienPhanBien')->references('MaGiaoVien')->on('giaoviens');
-            $table->string('MoTa');
+            $table->string('MoTa')->nullable();
             $table->timestamps();
         });
     }

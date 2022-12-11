@@ -75,6 +75,7 @@
                                     @foreach(DB::table('hoidongs')->pluck('MaHoiDong') as $mahd)
                                     <option value={{$mahd}}>{{DB::table('hoidongs')->where('MaHoiDong', $mahd)->value('TenHoiDong');}}</option>
                                     @endforeach
+                                    <option value="">NULL</option>
                                 </select>
                             </div>
                             <div class="form-group">

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Sinhvien;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 class SvprofileController extends Controller
 {
     /**

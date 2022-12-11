@@ -25,6 +25,17 @@ class GvDoanController extends Controller
         return view('giaovien.doan.index',compact('doan','hoidong'))->with('i',(request()->input('page',1)-1)*9);
     }
 
+    public function duyetindex(Request $request)
+    {
+        $key= $request->input('key');
+    // Search in the title and body columns from the posts table
+        $doan = Doan::query()
+        ->where('TenDetai', 'LIKE', "%{$key}%")
+        ->orWhere('MaDoAn', 'LIKE', "%{$key}%")
+        ->get();
+        $hoidong=Hoidong::all();
+        return view('giaovien.doan.duyet',compact('doan','hoidong'))->with('i',(request()->input('page',1)-1)*9);
+    }
     /**
      * Show the form for creating a new resource.
      *

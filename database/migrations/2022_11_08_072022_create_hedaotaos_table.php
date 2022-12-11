@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('MaHeDaoTao')->unique();
             $table->string('TenHeDaoTao');
-            $table->string('MoTa');
+            $table->string('MoTa')->nullable();
             $table->timestamps();
         });
     }
