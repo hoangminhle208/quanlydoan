@@ -30,6 +30,7 @@ Thêm các chức năng tạo mới, xóa sửa nhóm
 Thêm trang chủ cho Sinh viên
 Những khó khăn:
 Bị bệnh nên không làm được nhiều
+
 Day 4:
 Ngày hôm qua
 Thêm model nhóm cho sinh viên(1 nhóm 3sv)
@@ -37,6 +38,7 @@ Ngày hôm nay
 Thêm master layout cho trang chủ của sinh viên
 Khó khăn
 Chưa tìm được layout ưng ý
+
 Day 5: 
 Ngày hôm qua:
 Thêm master layout cho trang chủ của sinh viên
@@ -47,6 +49,7 @@ Thêm chức năng mở đăng ký đề tài của admin
 Thêm table hội nhóm cho sinh viên
 Khó khăn: chưa làm được chức năng mở đăng ký đề tài
 Chưa tìm ra giải pháp code
+
 Day 6:
 Ngày hôm qua:
 Thêm chức năng quản lý nhóm cho admin
@@ -55,6 +58,7 @@ Ngày hôm nay:
 Thêm chức năng đăng ký đề tài cho sinh viên
 Thêm chức năng đổi mật khẩu, tài khoản, email cho sinh viên
 Khó khăn: chưa có
+
 Day 7: 
 Ngày hôm qua
 Thêm chức năng đăng ký đề tài cho sinh viên
