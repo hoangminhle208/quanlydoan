@@ -1,3 +1,4 @@
+**Sprint 1:
 Day 1:
 Ngày hôm qua: 
 Họp nhóm và đưa ra các nhiệm vụ cần làm
@@ -59,3 +60,5 @@ Ngày hôm nay:
 Thêm chức năng đăng ký đề tài cho sinh viên
 Thêm chức năng xóa đề tài của mình cho sinh viên
 Khó khăn: chưa có
+
+**Sprint 2
