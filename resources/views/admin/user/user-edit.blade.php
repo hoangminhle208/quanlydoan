@@ -60,6 +60,7 @@
                                     <option value="ADM">Admin</option>
                                     <option value="SV">Sinh viên</option>
                                     <option value="GV">Giáo viên</option>
+                                    <option value="TK">Trưởng khoa</option>
                                 </select>
                             </div>
                             <div class="form-group">
