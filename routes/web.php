@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdmTaodotdk;
 use App\Http\Controllers\ChuyennganhController;
 use App\Http\Controllers\DoanController;
 use App\Http\Controllers\HedaotaoController;
@@ -24,9 +25,12 @@ use App\Http\Controllers\GvprofileController;
 use App\Http\Controllers\SvThongbaoController;
 use App\Http\Controllers\GvThongbaoController;
 use App\Http\Controllers\TkChuyennganhController;
+use App\Http\Controllers\TkDoanController;
 use App\Http\Controllers\TkGiaovienController;
 use App\Http\Controllers\TkHoidongController;
+use App\Http\Controllers\TkNhomController;
 use App\Http\Controllers\TkSinhvienController;
+use App\Http\Controllers\TkTaodotdk;
 use App\Models\Chuyennganh;
 use App\Models\Doan;
 use App\Models\Giaovien;
@@ -47,13 +51,21 @@ use App\Models\Sinhvien;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::resource('/tkhoidong',TkHoidongController::class);
+Route::resource('/admin/taodotdk',AdmTaodotdk::class)->middleware('AdminRole');
 
-Route::resource('/tksinhvien',TkSinhvienController::class);
+Route::resource('/tktaodotdk',TkTaodotdk::class)->middleware('TruongkhoaRole');
 
-Route::resource('/tkgiaovien',TkGiaovienController::class);
+Route::resource('/tknhom',TkNhomController::class)->middleware('TruongkhoaRole');
 
-Route::resource('/tkchuyennganh',TkChuyennganhController::class);
+Route::resource('/tkdoan',TkDoanController::class)->middleware('TruongkhoaRole');
+
+Route::resource('/tkhoidong',TkHoidongController::class)->middleware('TruongkhoaRole');
+
+Route::resource('/tksinhvien',TkSinhvienController::class)->middleware('TruongkhoaRole');
+
+Route::resource('/tkgiaovien',TkGiaovienController::class)->middleware('TruongkhoaRole');
+
+Route::resource('/tkchuyennganh',TkChuyennganhController::class)->middleware('TruongkhoaRole');
 
 Route::resource('/gvprofile',GvprofileController::class)->middleware('GiaovienRole');
 

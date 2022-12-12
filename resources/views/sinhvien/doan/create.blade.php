@@ -11,6 +11,8 @@
                     </div>
                 </div>
             </div>
+            @foreach($dotdk as $dk)
+            @if(date("Y-m-d")<$dk->end &&date("Y-m-d")>$dk->start)
             <div class="card-body">
                 <form action="{{route('doans.store')}}" method="POST" >
                     @csrf
@@ -92,5 +94,9 @@
                     <button type="submit" class="btn btn-success mt-2">Lưu</button>
                 </form>
             </div>
+            @else
+            <h1>Chưa có đợt đăng ký đề tài</h1>
+            @endif
+            @endforeach
         </div>
 @endsection

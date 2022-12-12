@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Doan;
-use App\Models\Sinhvien;
 use App\Models\Taodotdk;
 use Illuminate\Http\Request;
 
-class SvDoanController extends Controller
+
+class AdmTaodotdk extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +15,19 @@ class SvDoanController extends Controller
      */
     public function index(Request $request)
     {
-        // $doan=Doan::paginate(9);
-        $key= $request->input('key');
-    // Search in the title and body columns from the posts table
-        $doan = Doan::query()
-        ->where('TenDetai', 'LIKE', "%{$key}%")
-        ->orWhere('MaDoAn', 'LIKE', "%{$key}%")
-        ->get();
-        return view('sinhvien.doan.index',compact('doan'))->with('i',(request()->input('page',1)-1)*9);
+        $search =  $request->input('key');
+        if($search!=""){
+            $taodotdk = Taodotdk::where(function ($query) use ($search){
+                $query->where('MaLop', 'like', '%'.$search.'%');
+                    
+            })
+            ->paginate(9);
+            $taodotdk->appends(['key' => $search]);
+        }
+        else{
+            $taodotdk = Taodotdk::paginate(9);
+        }
+        return view('admin.taodotdk.index',compact('taodotdk'))->with('i',(request()->input('page',1)-1)*9);
     }
 
     /**
@@ -33,9 +37,7 @@ class SvDoanController extends Controller
      */
     public function create()
     {
-        $sinhvien=Sinhvien::all();
-        $dotdk=Taodotdk::all();
-        return view('sinhvien.doan.create',compact('sinhvien','dotdk'));
+        return view('admin.taodotdk.create');
     }
 
     /**
@@ -46,8 +48,8 @@ class SvDoanController extends Controller
      */
     public function store(Request $request)
     {
-        Doan::create($request->all());
-        return redirect()->route('doans.index')->with('thongbao','Thêm đồ án thành công');
+        Taodotdk::create($request->all());
+        return redirect()->route('taodotdk.index')->with('thongbao','Tạo thành công');
     }
 
     /**
@@ -67,9 +69,9 @@ class SvDoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Doan $doan)
+    public function edit(Taodotdk $taodotdk)
     {
-        return view('sinhvien.doan.edit',compact('doan'));
+        return view('admin.taodotdk.edit',compact('taodotdk'));
     }
 
     /**
@@ -79,10 +81,10 @@ class SvDoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Doan $doan)
+    public function update(Request $request, Taodotdk $taodotdk)
     {
-        $doan->update($request->all());
-        return redirect()->route('doan.index')->with('thongbao','Cập nhật đồ án thành công');
+        $taodotdk->update($request->all());
+        return redirect()->route('taodotdk.index')->with('thongbao','Cập nhật thành công');
     }
 
     /**
@@ -91,9 +93,9 @@ class SvDoanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Doan $doan)
+    public function destroy(Taodotdk $taodotdk)
     {
-        $doan->delete();
-        return redirect()->route('doan.index')->with('thongbao','Xóa đồ án thành công');
+        $taodotdk->delete();
+        return redirect()->route('taodotdk.index')->with('thongbao','Xóa thành công');
     }
 }

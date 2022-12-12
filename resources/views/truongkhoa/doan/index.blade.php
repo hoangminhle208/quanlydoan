@@ -4,7 +4,7 @@
     <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
     <a role="button" class="btn btn-success" href="{{route('truongkhoa.index')}}"><i class="fa-solid fa-house"></i>Home</a>
     <a role="button" class="btn btn-info" href="/admin/profile"><i class="fa-solid fa-user"></i>My Profile</a>
-    <a role="button" class="btn btn-danger" href="/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
+    <a role="button" class="btn btn-danger" href="/admin/logout"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
 
     <div class="btn-group" role="group">
         <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -19,16 +19,15 @@
         <li><a class="dropdown-item" href="{{route('tknhom.index')}}">Quản lí nhóm</a></li>
         </ul>
     </div>
-    
     </div>
         <div class="card">
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Quản lí chuyên ngành</h3>
+                        <h3>Quản lý đồ án</h3>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{route('tkchuyennganh.create')}}" class="btn btn-primary float-end" >Thêm mới</a>
+                        <a href="{{route('tkdoan.create')}}" class="btn btn-primary float-end" >Thêm mới</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +39,7 @@
                 @endif
                 <form action="" class="d-flex flex-row align-items-center flex-wrap">
                     <div class="form-group">
-                        <input class="form-control" type="text" name="key" placeholder="Tìm theo tên hoặc mã chuyên ngành" required/>
+                        <input class="form-control" type="text" name="key" placeholder="Tìm theo tên hoặc mã đồ án" required/>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-search"></i>
@@ -50,26 +49,45 @@
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Mã chuyên ngành</th>
-                            <th>Tên chuyên ngành</th>
-                            <th>Khoa</th>
-                            <th>Mô tả</th>
+                            <th>Hình ảnh</th>
+                            <th>Mã đồ án</th>
+                            <th>Tên đồ án</th>
+                            <th>Nhóm SVTH/Giáo viên HD</th>
+                            <th>Hội đồng/Chuyên ngành/Khoa</th>
+                            <th>Link đồ án</th>
+                            <th>Trạng thái</th>
                             <th>Thao tác</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($tkchuyennganh as $cn)
+                        @foreach($tkdoan as $da)
                         <tr>
                             <td>{{++$i}}</td>
-                            <td>{{$cn->MaChuyenNganh}}</td>
-                            <td>{{$cn->TenChuyenNganh}}</td>
-                            <td>{{DB::table('khoas')->where('MaKhoa', $cn->MaKhoa)->value('TenKhoa')}}
-                                <br>Mã khoa: {{$cn->MaKhoa}}
+                            <td><img src={{$da->HinhAnh}} alt="" style="width:75px; height:75px;"></td>
+                            <td>{{$da->MaDoAn}}</td>
+                            <td>{{$da->TenDetai}}</td>
+                            <td> SVTH: {{DB::table('nhoms')->where('id', $da->Nhom)->value('TenNhom')}}
+                                <br>GVHD:{{DB::table('giaoviens')->where('MaGiaoVien', $da->GVHD)->value('Ten')}}
+                                
                             </td>
-                            <td>{{$cn->MoTa}}</td>
+                            <td>Khoa: {{DB::table('khoas')->where('MaKhoa', $da->Khoa)->value('TenKhoa')}}
+                                <br>Chuyên ngành: {{DB::table('chuyennganhs')->where('MaChuyenNganh', $da->ChuyenNganh)->value('TenChuyenNganh')}}
+                                <br>Hội đồng: {{DB::table('hoidongs')->where('MaHoiDong', $da->HoiDong)->value('TenHoiDong')}}
+                            </td>
+                            
+                            <td><a role="button" class="btn btn-success" href={{$da->Link}}</a>Link</a></td>
                             <td>
-                                <form action="{{route('tkchuyennganh.destroy',$cn->id)}}" method="POST">
-                                    <a href="{{route('tkchuyennganh.edit',$cn->id)}}" class="btn btn-info">Sửa</a>
+                                @if($da->TrangThai==='DONE')
+                                    <button type="button" class="btn btn-success">Đã duyệt</button>
+                                @elseif($da->TrangThai==='WAIT')
+                                    <button type="button" class="btn btn-warning">Đang chờ</button>
+                                @else
+                                    <button type="button" class="btn btn-danger">Hủy bỏ</button>
+                                @endif
+                            </td>
+                            <td>
+                                <form action="{{route('tkdoan.destroy',$da->id)}}" method="POST">
+                                    <a href="{{route('tkdoan.edit',$da->id)}}" class="btn btn-info">Sửa</a>
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Xóa</button>
@@ -79,9 +97,8 @@
                         @endforeach
                     </tbody>
                 </table>
-                
             </div>
-            {{$tkchuyennganh->links()}}
+            {{$tkdoan->links()}}
         </div>
     </div>
 @endsection

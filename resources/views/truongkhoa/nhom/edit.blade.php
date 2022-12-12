@@ -24,53 +24,46 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3>Thêm hội đồng</h3>
+                        <h3>Sửa lớp</h3>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{route('tkhoidong.index')}}" class="btn btn-primary float-end">Danh sách hội đồng</a>
+                        <a href="{{route('tknhom.index')}}" class="btn btn-primary float-end">Danh sách nhóm</a>
                     </div>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{route('tkhoidong.store')}}" method="POST">
+                <form action="{{route('tknhom.update',$tknhom->id)}}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <strong>Mã hội đồng</strong>
-                                <input type="text" name="MaHoiDong" class="form-control" placeholder="Nhập mã hội đồng">
+                                <strong>Tên nhóm</strong>
+                                <input type="text" name="TenNhom" value="{{$tknhom->TenNhom}}" class="form-control" placeholder="Nhập mã lớp">
                             </div>
                             <div class="form-group">
-                                <strong>Tên hội đồng</strong>
-                                <input type="text" name="TenHoiDong" class="form-control" placeholder="Nhập tên hội đồng">
-                            </div>
-                            <div class="form-group">
-                                <strong>Chọn chủ tịch</strong>
-                                <select class="form-select form-select-sm" name="MaChuTich" aria-label=".form-select-lg example">
-                                    @foreach(DB::table('giaoviens')->pluck('MaGiaoVien') as $magv)
-                                    <option value={{$magv}}>{{DB::table('giaoviens')->where('MaGiaoVien', $magv)->value('Ten');}}</option>
+                                <strong>Nhóm trưởng</strong>
+                                <select class="form-select form-select-sm" name="NhomTruong" aria-label=".form-select-lg example">
+                                    @foreach(DB::table('sinhviens')->pluck('MaSinhVien') as $masv)
+                                    <option value={{$masv}}>{{DB::table('sinhviens')->where('MaSinhVien', $masv)->value('Ten');}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <strong>Chọn thư ký</strong>
-                                <select class="form-select form-select-sm" name="MaThuKy" aria-label=".form-select-lg example">
-                                    @foreach(DB::table('giaoviens')->pluck('MaGiaoVien') as $magv)
-                                    <option value={{$magv}}>{{DB::table('giaoviens')->where('MaGiaoVien', $magv)->value('Ten');}}</option>
+                                <strong>Thành viên 1</strong>
+                                <select class="form-select form-select-sm" name="NhomTruong" aria-label=".form-select-lg example">
+                                    @foreach(DB::table('sinhviens')->pluck('MaSinhVien') as $masv)
+                                    <option value={{$masv}}>{{DB::table('sinhviens')->where('MaSinhVien', $masv)->value('Ten');}}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="form-group">
-                                <strong>Chọn giáo viên phản biện</strong>
-                                <select class="form-select form-select-sm" name="MaGiaoVienPhanBien" aria-label=".form-select-lg example">
-                                    @foreach(DB::table('giaoviens')->pluck('MaGiaoVien') as $magv)
-                                    <option value={{$magv}}>{{DB::table('giaoviens')->where('MaGiaoVien', $magv)->value('Ten');}}</option>
+                                <strong>Thành viên 2</strong>
+                                <select class="form-select form-select-sm" name="NhomTruong" aria-label=".form-select-lg example">
+                                    @foreach(DB::table('sinhviens')->pluck('MaSinhVien') as $masv)
+                                    <option value={{$masv}}>{{DB::table('sinhviens')->where('MaSinhVien', $masv)->value('Ten');}}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                            <div class="form-group">
-                                <strong>Mô tả</strong>
-                                <input type="text" name="MoTa" class="form-control" placeholder="Nhập mô tả">
                             </div>
                         </div>
                         

@@ -56,6 +56,7 @@
                     <hr class="dropdown-divider">
                 </li>
                 <li><a class="dropdown-item" href="/admin/user">Quản lí user</a></li>
+                <li><a class="dropdown-item" href="{{route('taodotdk.index')}}">Tạo đợt đăng ký</a></li>
                 </ul>
 
                 
@@ -69,7 +70,8 @@
         <div class="row row-cols-1 row-cols-md-4 g-4">
     <div class="col">
         <div class="card h-100">
-        <img src="" 
+        <img style="height: 100px; width: 100px;"
+        src="https://images.squarespace-cdn.com/content/v1/5930dc9237c5817c00b10842/1557980730821-E0BL40VN22LDSYKQH91O/images.png" 
         class="card-img-top" alt="..." >
         <div class="card-body">
             <h5 class="card-title">Số niên khóa</h5>
@@ -80,7 +82,8 @@
     </div>
     <div class="col">
         <div class="card h-100">
-        <img src="" class="card-img-top" alt="...">
+        <img style="height: 100px; width: 100px;"
+        src="https://images.squarespace-cdn.com/content/v1/5930dc9237c5817c00b10842/1557980730821-E0BL40VN22LDSYKQH91O/images.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Tổng số khoa</h5>
             <strong class="card-text text-primary">Số lượng: {{$khoa_count}}</strong>
@@ -90,7 +93,8 @@
     </div>
     <div class="col">
         <div class="card h-100">
-        <img src="" class="card-img-top" alt="...">
+        <img style="height: 100px; width: 100px;"
+        src="https://images.squarespace-cdn.com/content/v1/5930dc9237c5817c00b10842/1557980730821-E0BL40VN22LDSYKQH91O/images.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Tổng chuyên ngành</h5>
             <strong class="card-text text-primary">Số lượng: {{$chuyennganh_count}}</strong>
@@ -100,7 +104,8 @@
     </div>
     <div class="col">
         <div class="card h-100">
-        <img src="" class="card-img-top" alt="...">
+        <img style="height: 100px; width: 100px;"
+        src="https://images.squarespace-cdn.com/content/v1/5930dc9237c5817c00b10842/1557980730821-E0BL40VN22LDSYKQH91O/images.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Giáo viên</h5>
             <strong class="card-text text-primary">Số lượng: {{$giaovien_count}}</strong>
@@ -110,7 +115,8 @@
     </div>
     <div class="col">
         <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
+        <img style="height: 100px; width: 100px;"
+        src="https://images.squarespace-cdn.com/content/v1/5930dc9237c5817c00b10842/1557980730821-E0BL40VN22LDSYKQH91O/images.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Hệ đào tạo</h5>
             <strong class="card-text text-primary">Số lượng: {{$hedaotao_count}}</strong>
@@ -120,7 +126,8 @@
     </div>
     <div class="col">
         <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
+        <img style="height: 100px; width: 100px;"
+        src="https://images.squarespace-cdn.com/content/v1/5930dc9237c5817c00b10842/1557980730821-E0BL40VN22LDSYKQH91O/images.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Sinh viên</h5>
             <strong class="card-text text-primary">Số lượng: {{$sinhvien_count}}</strong>
@@ -130,7 +137,8 @@
     </div>
     <div class="col">
         <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
+        <img style="height: 100px; width: 100px;" 
+        src="https://images.squarespace-cdn.com/content/v1/5930dc9237c5817c00b10842/1557980730821-E0BL40VN22LDSYKQH91O/images.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Hội đồng</h5>
             <strong class="card-text text-primary">Số lượng: {{$hoidong_count}}</strong>
@@ -140,7 +148,8 @@
     </div>
     <div class="col">
         <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
+        <img style="height: 100px; width: 100px;"
+        src="https://images.squarespace-cdn.com/content/v1/5930dc9237c5817c00b10842/1557980730821-E0BL40VN22LDSYKQH91O/images.png" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Đồ án</h5>
             <strong class="card-text text-primary">Số lượng: {{$doan_count}}</strong>

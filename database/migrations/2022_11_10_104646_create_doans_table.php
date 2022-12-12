@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('HinhAnh');
             $table->string('MaDoAn')->unique();
             $table->string('TenDetai');
-            $table->string('Nhom')->references('id')->on('nhoms');
+            $table->string('Nhom')->references('id')->on('nhoms')->nullable();
             $table->string('GVHD')->references('MaGiaoVien')->on('giaoviens');
             $table->string('HoiDong')->references('MaHoiDong')->on('hoidongs')->nullable();
             $table->string('ChuyenNganh')->references('MaChuyenNganh')->on('chuyennganhs');
